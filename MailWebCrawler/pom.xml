@@ -2,7 +2,61 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.training.assignment</groupId>
   <artifactId>MailWebCrawler</artifactId>
+  
+  <!-- Output to jar format -->
+	<packaging>jar</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>MailWebCrawler</name>
   <description>This is a WebCrawler for downloading mails</description>
+  
+  <properties>
+		<jdk.version>1.7</jdk.version>
+	</properties>
+	
+	<dependencies>
+	</dependencies>
+	
+	<build>
+		<finalName>MailWebCrawler</finalName>
+		<plugins>
+ 
+			<!-- download source code in Eclipse, best practice -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+				</configuration>
+			</plugin>
+ 
+			<!-- Set a JDK compiler level -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+ 
+			<!-- Make this jar executable -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+				  <!-- DO NOT include log4j.properties file in your Jar -->
+				  <archive>
+					<manifest>
+						<!-- Jar file entry point -->
+						<mainClass>com.training.assignment.MailWebCrawler</mainClass>
+					</manifest>
+				  </archive>
+				</configuration>
+			</plugin>
+ 
+		</plugins>
+	</build>
 </project>
